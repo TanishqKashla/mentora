@@ -4,11 +4,11 @@
 
 :root {
   --bg: #fee8ff;
-  --text: white;
+  --text: rgb(32, 32, 32);
   --btn: #3673fd;
   --bgSoft: #2d2b42;
   --textSoft: #e5e5e5;
-  --bgGradient: linear-gradient(145deg, rgba(212, 220, 241, 1) 0%, rgba(225, 208, 238, 1) 54%, rgba(207, 231, 255, 1) 100%);
+  --bgGradient: linear-gradient(100deg, rgb(194, 204, 229) 0%, rgb(207, 178, 220) 54%, rgb(138, 163, 188) 100%);
 }
 
 *{
