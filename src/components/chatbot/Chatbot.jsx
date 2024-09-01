@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { AiOutlineClose, AiOutlineMessage } from 'react-icons/ai'; // Ensure you have the react-icons package installed
+import { IoSend } from "react-icons/io5";
 
 const Chatbot = () => {
     const [input, setInput] = useState('');
@@ -47,21 +48,22 @@ const Chatbot = () => {
     return (
         <div style={{ position: 'relative' }}>
             {isOpen ? (
-                <div style={{ position: 'fixed', bottom: '20px', right: '20px', width: '400px' }}>
+                <div style={{ position: 'fixed', bottom: '20px', right: '20px', width: '400px', backgroundColor: "white", }}>
                     <div
                         ref={chatContainerRef}
                         style={{
-                            border: '1px solid #ccc',
+                            border: '2px solid #bbb',
                             borderRadius: '5px',
-                            padding: '10px',
-                            height: '400px',
+                            height: '500px',
                             overflowY: 'scroll',
-                            backgroundColor: '#f9f9f9',
-                            position: 'relative'
+                            position: 'relative',
+                            width: "400px"
+
                         }}
                     >
-                        <div className='fixed'>
 
+                        <div className='fixed w-[397px] h-10 bg-blue-900 text-white items-center px-4 flex justify-between bg-gradient-to-br from-[rgb(37,43,97)] to-[rgb(54,123,241)]'>
+                            <h1 className='font-bold'>Chat with "Aura" AI</h1>
                             <button
                                 onClick={() => setIsOpen(false)}
                                 style={{
@@ -75,43 +77,58 @@ const Chatbot = () => {
                             >
                                 <AiOutlineClose />
                             </button>
-                            <h1>Chat with "Aura" AI</h1>
                         </div>
-                        {chatHistory.map((message, index) => (
-                            <div key={index} style={{ marginBottom: '10px',marginTop:'50px' }}>
-                                <strong>{message.sender === 'user' ? 'You:' : 'AI:'}</strong>
-                                <p style={{ margin: '5px 0', padding: '5px', borderRadius: '5px', backgroundColor: message.sender === 'user' ? '#d1e7dd' : '#e2e3e5' }}>
-                                    {message.text}
-                                </p>
-                            </div>
-                        ))}
-                        <form onSubmit={handleSubmit} className='absolute bottom-0 flex bg-red-200 w-full overflow-hidden'>
+
+                        <div className='mb-20 mt-10 px-3'>
+
+                            {chatHistory.map((message, index) => (
+                                <div key={index} style={{ marginBottom: '5px', }}>
+                                    <strong>{message.sender === 'user' ? 'You:' : 'AI:'}</strong>
+                                    <p
+                                        style={{
+                                            margin: '5px 0',
+                                            padding: '10px',
+                                            borderRadius: '10px',
+                                            backgroundColor: 'none',
+                                            background: message.sender === 'user' ? "linear-gradient(152deg,rgba(37,43,97,1) 0%, rgba(54,123,241,1) 100%)" : 'none',
+                                            border: message.sender === 'user' ? 'none' : '2px solid #252b61',
+                                            color: message.sender === 'user' ? 'white' : '#252b61',
+
+                                        }}>
+                                        {message.text}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                        <form onSubmit={handleSubmit} className='fixed bottom-[20px] w-[360px] flex justify-between overflow-hidden mx-3 mb-3'>
                             <input
                                 type="text"
                                 value={input}
                                 onChange={handleInputChange}
                                 placeholder="Ask something..."
                                 style={{
-                                    width: '70%',
                                     padding: '10px',
                                     borderRadius: '5px',
                                     border: '1px solid #ccc',
-                                    marginBottom: '10px',
-                                    marginTop: '50px',
+                                    width: '83%',
 
                                 }}
                             />
                             <button
                                 type="submit"
                                 style={{
-                                    width: '30%',
-                                    borderRadius: '5px',
-                                    backgroundColor: '#007bff',
+                                    width: '15%',
+                                    aspectRatio: '1/1',
+                                    borderRadius: '50px',
+                                    background: "linear-gradient(152deg,rgba(37,43,97,1) 0%, rgba(54,123,241,1) 100%)",
                                     color: 'white',
                                     border: 'none',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
                                 }}
                             >
-                                Send
+                                <IoSend size={20} />
                             </button>
                         </form>
                     </div>
