@@ -1,6 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
+import DoctorSectionHome from "@/components/homeSections/doctorSectionHome";
+import LabTest from "@/components/homeSections/labTest";
+import Article from "@/components/homeSections/article";
+
 
 const page = () => {
   return (
@@ -138,6 +142,14 @@ const page = () => {
           </div>
         </div>
       </div>
+
+
+    {/* DOCTOR SECTION */}
+    <DoctorSectionHome/>
+    <LabTest/>
+    <Article/>
+
+
     </div>
   );
 };
